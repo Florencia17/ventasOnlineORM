@@ -18,6 +18,7 @@ public class Main {
 //        ProductoServicio productoService = new ProductoServicio("jpa-mysql");
 //        PromocionServicio promocionService = new PromocionServicio("jpa-mysql");
 //        VentaServicio ventaService = new VentaServicio("jpa-mysql");
+//        kjdshfhsfkj
 
         VentaInterface vs = new VentaServicio("jpa-mysql");
 //        List<Venta> ventas = vs.ventas();
