@@ -11,6 +11,8 @@ public class Producto {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
+    @Version
+    private long version;
     private String codigo;
     private String descripcion;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
@@ -50,6 +52,15 @@ public class Producto {
     }
 
 
+    //Otra opcion para el manejo de versiones
+    public Producto(Long id, String codigo, String descripcion, Categoria categoria, double precio, Marca marca,
+                    Long version) throws RuntimeException {
+        this(codigo, precio, descripcion, categoria, marca);
+        this.id = id;
+        this.version = version;
+    }
+
+
     private boolean esDatoVacio(String dato) {
         return dato.equals("");
     }
@@ -58,7 +69,13 @@ public class Producto {
         return dato == null;
     }
 
+    public long getVersion() {
+        return version;
+    }
 
+    public void setVersion(long version) {
+        this.version = version;
+    }
     public String codigo() {
         return codigo;
     }

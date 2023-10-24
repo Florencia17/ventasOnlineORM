@@ -4,6 +4,7 @@ import ar.unrn.tp.api.VentaInterface;
 import ar.unrn.tp.modelo.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +32,6 @@ public class VentaServicio implements VentaInterface {
             if(idTarjeta == null)
                 throw new RuntimeException("La tarjeta no debe ser vacia.");
 
-            // validaciones:
-            // - debe ser un cliente existente
-            // - la lista de productos no debe estar vacía
-            // - La tarjeta debe pertenecer al cliente
 
             Carrito carrito = new Carrito();
             Cliente cliente = em.find(Cliente.class, idCliente);
@@ -60,6 +57,29 @@ public class VentaServicio implements VentaInterface {
 
             Tienda tienda = em.find(Tienda.class, 31L);
             Venta venta = carrito.pagar(cliente, tienda.MarcaPromocionVigente(), tienda.TarjetaPromocionVigente(), tarjeta);
+
+            //aca se hace la parte para darle un codigo y un año a la venta
+
+            LocalDate hoy = LocalDate.now();
+            TypedQuery<NumeroVenta> qnv = em.createQuery("select nv from NumeroVenta nv where nv.anio=:anio", NumeroVenta.class);
+            qnv.setParameter("anio", hoy.getYear());
+            qnv.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+
+            List<NumeroVenta> lista = qnv.getResultList();
+            System.out.println(lista);
+            NumeroVenta numeroVenta;
+            if (lista.isEmpty()) {
+                System.out.println("vacia");
+                numeroVenta = new NumeroVenta(1, hoy.getYear());
+                em.persist(numeroVenta);
+            } else {
+                System.out.println("Ya existen ventas para este año");
+                numeroVenta = lista.get(0);
+                numeroVenta.numeroSiguiente();
+            }
+            System.out.println(numeroVenta.crearNumero());
+
+            venta.setNumeroVenta(numeroVenta.crearNumero());
             tienda.agregarVenta(venta);
 
 

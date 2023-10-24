@@ -1,5 +1,7 @@
 package ar.unrn.tp.api;
 
+import ar.unrn.tp.modelo.Categoria;
+import ar.unrn.tp.modelo.Marca;
 import ar.unrn.tp.modelo.Producto;
 
 import java.util.List;
@@ -11,10 +13,16 @@ public interface ProductoInterfaz {
 
     //validar que sea un producto existente
     void modificarProducto(Long idProducto, String codigo, String descripcion, float precio, Long idCategoria,
-                           Long idMarca);
+                           Long idMarca, Long version);
 
     //Devuelve todos los productos
     List<Producto> listarProductos();
     void crearCategoria(String nombre);
     void crearMarca(String nombre);
+
+    Producto buscarProducto(Long id);
+
+    List<Categoria> listarCategorias();
+
+    List<Marca> listarMarcas();
 }

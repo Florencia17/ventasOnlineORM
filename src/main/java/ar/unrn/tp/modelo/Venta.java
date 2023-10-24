@@ -19,6 +19,10 @@ public class Venta {
     @JoinColumn(name = "id_venta")
     private List<ProductoVendido> productosVendidos;
 
+
+    //Se agrega el numero de venta
+    private String numeroVenta;
+
     public long getId() {
         return id;
     }
@@ -68,6 +72,8 @@ public class Venta {
     }
     private double montoAbonado;
 
+
+
     protected Venta() {
 
     }
@@ -80,6 +86,21 @@ public class Venta {
         this.productosVendidos = new ArrayList<>();
         this.agregarProductos(productosVendidos);
         this.montoAbonado = montoAbonado;
+    }
+
+
+    //Constructor con el numero de venta + los get y set
+    public Venta(Cliente cliente, Tarjeta tarjeta, EstadoVenta estadoVenta, List<Producto> productosVendidos, double montoAbonado, String numeroVenta) {
+        this(cliente, tarjeta, estadoVenta, productosVendidos, montoAbonado);
+        this.numeroVenta = numeroVenta;
+    }
+
+    public String getNumeroVenta() {
+        return numeroVenta;
+    }
+
+    public void setNumeroVenta(String numeroVenta) {
+        this.numeroVenta = numeroVenta;
     }
 
     private void agregarProductos(List<Producto> productos) {

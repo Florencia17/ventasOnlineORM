@@ -1,5 +1,6 @@
 package ar.unrn.tp.ui;
 
+
 import ar.unrn.tp.api.ClienteInterfaz;
 import ar.unrn.tp.api.ProductoInterfaz;
 import ar.unrn.tp.api.VentaInterface;
@@ -131,8 +132,26 @@ public class ProductosUI extends JFrame {
                 tarjetasUI.setVisible(true);
             }
         });
-        irAlCarritoNewButton.setBounds(105, 225, 187, 23);
+        irAlCarritoNewButton.setBounds(222, 227, 187, 23);
         contentPane.add(irAlCarritoNewButton);
+
+        JButton btnNewButtonModificarProducto = new JButton("Modificar Producto");
+        btnNewButtonModificarProducto.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Long idProducto;
+                int[] index = listProductos.getSelectedIndices();
+                if (index.length == 0) {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar al menos un producto", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+             //   ModificarProductosUI productosUI = new ModificarProductosUI();
+
+            }
+        });
+        btnNewButtonModificarProducto.setBounds(24, 227, 188, 23);
+        contentPane.add(btnNewButtonModificarProducto);
 
 
 
