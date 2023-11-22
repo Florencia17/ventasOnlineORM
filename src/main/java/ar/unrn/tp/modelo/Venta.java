@@ -7,8 +7,9 @@ import java.util.List;
 @Entity
 public class Venta {
     @Id
+    private String id;
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idc;
     @OneToOne(cascade = CascadeType.PERSIST)
     private Cliente cliente;
     @Enumerated(EnumType.ORDINAL)
@@ -23,11 +24,19 @@ public class Venta {
     //Se agrega el numero de venta
     private String numeroVenta;
 
-    public long getId() {
+    public long getIdc() {
+        return idc;
+    }
+
+    public void setIdc(long id) {
+        this.idc = id;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -80,6 +89,17 @@ public class Venta {
 
 
     public Venta(Cliente cliente, Tarjeta tarjeta, EstadoVenta estadoVenta, List<Producto> productosVendidos, double montoAbonado) {
+        this.cliente = cliente;
+        this.tarjeta = tarjeta;
+        this.estadoVenta = estadoVenta;
+        this.productosVendidos = new ArrayList<>();
+        this.agregarProductos(productosVendidos);
+        this.montoAbonado = montoAbonado;
+    }
+
+    //Constructor con id cliente
+    public Venta(String id, Cliente cliente, Tarjeta tarjeta, EstadoVenta estadoVenta, List<Producto> productosVendidos, double montoAbonado) {
+        this.id = id;
         this.cliente = cliente;
         this.tarjeta = tarjeta;
         this.estadoVenta = estadoVenta;

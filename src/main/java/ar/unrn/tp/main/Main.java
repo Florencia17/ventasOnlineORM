@@ -7,7 +7,6 @@ import ar.unrn.tp.jpa.service.ClienteServicio;
 import ar.unrn.tp.jpa.service.ProductoServicio;
 import ar.unrn.tp.jpa.service.PromocionServicio;
 import ar.unrn.tp.jpa.service.VentaServicio;
-import ar.unrn.tp.ui.ModificarProductosUI;
 import ar.unrn.tp.ui.ProductosUI;
 
 import java.time.LocalDate;
@@ -28,7 +27,7 @@ public class Main {
 
 //        ClienteInterfaz cs = new ClienteServicio("jpa-mysql");
 //        cs.crearCliente("florencia", "malacarne", "41421287", "flor@gmail.com");
-       //crear otro cliente
+        //crear otro cliente
 //        cs.modificarCliente(1L, "f", "mala", "41421287", "flor@gmail.com");
 //      cs.agregarTarjeta(1L, "1", "mastercard");
 //        cs.agregarTarjeta(1L, "12", "visa");
@@ -57,11 +56,8 @@ public class Main {
 //        TarjetaPromocion tp= new TarjetaPromocion(true, LocalDate.now(), LocalDate.now().plusDays(4), 0.08, "MASTERCARD");
 ////        promo.agregarPromocionMarca(mp);
 //        promo.agregarPromocionTarjeta(tp);
-//        ProductosUI ventanaProductos = new ProductosUI(new ProductoServicio("jpa-mysql"), new VentaServicio("jpa-mysql"), new ClienteServicio("jpa-mysql"), 1L );
-//        ventanaProductos.setVisible(true);
-
-        ModificarProductosUI frame = new ModificarProductosUI(new ProductoServicio("jpa-mysql"), 24L);
-        frame.setVisible(true);
+        ProductosUI ventanaProductos = new ProductosUI(new ProductoServicio("jpa-mysql"), new VentaServicio("jpa-mysql"), new ClienteServicio("jpa-mysql"), 1L );
+        ventanaProductos.setVisible(true);
 
 
 

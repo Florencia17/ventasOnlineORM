@@ -102,11 +102,11 @@ public class ProductoServicio implements ProductoInterfaz {
 
             producto.setVersion(version);
 
-            producto.setCategoria(categoria);
-            producto.setCodigo(codigo);
-            producto.setDescripcion(descripcion);
-            producto.setMarca(marca);
-            producto.setPrecio(precio);
+//            producto.setCategoria(categoria);
+//            producto.setCodigo(codigo);
+//            producto.setDescripcion(descripcion);
+//            producto.setMarca(marca);
+//            producto.setPrecio(precio);
 
             //Estrategia Optimista
             try{

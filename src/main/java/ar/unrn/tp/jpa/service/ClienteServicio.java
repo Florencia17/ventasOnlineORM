@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ClienteServicio implements ClienteInterfaz {
 
-    private String consultaCrear = "SELECT c FROM Cliente c WHERE c.dni = '";
+    private String consultaCrear = "SELECT c FROM Cliente c WHERE c.dni = ";
     private String consultaBuscarId = "SELECT c FROM Cliente c WHERE c.id =";
 
     private EntityManagerFactory emf; //= Persistence.createEntityManagerFactory("objectdb:myDbFile.odb");

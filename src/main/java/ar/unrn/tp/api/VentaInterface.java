@@ -18,4 +18,7 @@ public interface VentaInterface {
 
     // Devuelve todas las ventas realizadas
     List<Venta> ventas();
+
+    //Devuelve las ultimas 3 ventas
+    List<Venta> ultimasVentas(Long id);
 }

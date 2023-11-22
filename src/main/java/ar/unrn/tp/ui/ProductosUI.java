@@ -135,23 +135,15 @@ public class ProductosUI extends JFrame {
         irAlCarritoNewButton.setBounds(222, 227, 187, 23);
         contentPane.add(irAlCarritoNewButton);
 
-        JButton btnNewButtonModificarProducto = new JButton("Modificar Producto");
-        btnNewButtonModificarProducto.addActionListener(new ActionListener() {
+        JButton btnNewButtonUltimasVentas = new JButton("Ver Ultimas Ventas");
+        btnNewButtonUltimasVentas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Long idProducto;
-                int[] index = listProductos.getSelectedIndices();
-                if (index.length == 0) {
-                    JOptionPane.showMessageDialog(null, "Debe seleccionar al menos un producto", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-             //   ModificarProductosUI productosUI = new ModificarProductosUI();
-
+                VentanaCompras ventanaCompras = new VentanaCompras(new VentaServicio("jpa-mysql"), 1L);
+                ventanaCompras.setVisible(true);
             }
         });
-        btnNewButtonModificarProducto.setBounds(24, 227, 188, 23);
-        contentPane.add(btnNewButtonModificarProducto);
+        btnNewButtonUltimasVentas.setBounds(24, 227, 188, 23);
+        contentPane.add(btnNewButtonUltimasVentas);
 
 
 
